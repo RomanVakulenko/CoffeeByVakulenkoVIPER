@@ -11,7 +11,7 @@
 - VIPER, dependencies injection with CocoaPods,
 - CoreLocation, SnapKit, YandexMapsMobile, Security (KeyChain)
 - Swagger API (POST & GET requests), Alamofire, DispatchGroup, Error handling with Result
-- EndPont, Factory (URLRequestFactoryProtocol), Singleton (KeyChain, User Defaults), Alerts, ActivityIndicator
+- EndPont, Factory (ModuleFactoryProtocol, URLRequestFactoryProtocol), Singleton (KeyChain, User Defaults), Alerts, ActivityIndicator
 - Generic for Mapper, Delegate
 - TableView, CollectionView and CollectionFlowLayOut, Custom Cells, FileManager
 
