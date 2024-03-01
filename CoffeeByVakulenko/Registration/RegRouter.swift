@@ -24,9 +24,10 @@ final class RegistrationRouter {
 extension RegistrationRouter: RegistrationRouterProtocol {
     func showCafesListWith(_ cafes: [CafeTableModelForUI],
                            locations: [LocationResponseModel]) {
-        let module = moduleFactory.makeCafesList(using: navigationController,
-                                                 cafes: cafes,
-                                                 modelWithLocation: locations)
+        let module = moduleFactory.makeCafesList(
+            using: navigationController,
+            cafes: cafes,
+            modelWithLocation: locations)
 
         if let viewController = module.assemble() {
             navigationController.pushViewController(viewController, animated: true)

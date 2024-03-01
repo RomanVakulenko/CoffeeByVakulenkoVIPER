@@ -15,6 +15,7 @@ final class CafesListViewController: UIViewController, CafesListViewable {
     var presenter: CafesListPresenterProtocol = CafesListPresenter()
     var cafesModel: [CafeTableModelForUI] = []
 
+    // MARK: - Private properties
     private let borderView: UIView = {
         let stroke = UIView()
         stroke.layer.borderWidth = 0.5

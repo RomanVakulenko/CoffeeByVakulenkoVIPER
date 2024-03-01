@@ -9,18 +9,21 @@
 import Foundation
 import Alamofire
 
-// MARK: - LoginInteractor
+// MARK: - Registration & LoginInteractor
 final class RegistrationInteractor: RegistrationInteractable {
 
+    // MARK: - Public properties
     weak var presenter: RegistrationPresenterProtocol?
     var cafes: [CafeTableModelForUI] = []
 
+    // MARK: - Private properties
     private let registerService, loginService, cafeService: StandardNetworkService
     private let userDefaults: CoffeeUserDefaults
     private let keychain: CoffeeKeychain
     private let distanceService: DistanceServiceProtocol
     private let mapper = DataMapper()
 
+    // MARK: - Init
     init(registerService: StandardNetworkService = StandardNetworkService(resourcePath: "/auth/register"),
          loginService: StandardNetworkService = StandardNetworkService(resourcePath: "/auth/login"),
          cafeService: StandardNetworkService = StandardNetworkService(resourcePath: "/locations", authenticated: true),
@@ -35,7 +38,8 @@ final class RegistrationInteractor: RegistrationInteractable {
         self.distanceService = distanceService
     }
 
-    func makeUIModelWithDistanceFor(_ locations: [LocationResponseModel]) -> [CafeTableModelForUI] {
+    // MARK: - Private methods
+    private func makeUIModelWithDistanceFor(_ locations: [LocationResponseModel]) -> [CafeTableModelForUI] {
         distanceService.makeUIModelWithDistance(
             decodedModel: locations,
             locationManager: distanceService.locationManager) { cafesForUI in
@@ -46,7 +50,7 @@ final class RegistrationInteractor: RegistrationInteractable {
 }
 
 
-// MARK: - Credentials handler
+// MARK: - RegistrationInteractorCredentialsHandler
 extension RegistrationInteractor: RegistrationInteractorCredentialsHandler {
 
     var doRememberUsername: Bool { userDefaults.isUsernameStored ?? true }
@@ -57,7 +61,7 @@ extension RegistrationInteractor: RegistrationInteractorCredentialsHandler {
     }
 }
 
-// MARK: - Services
+// MARK: - RegistrationInteractorServiceRequester
 extension RegistrationInteractor: RegistrationInteractorServiceRequester {
 
     func register(username: String, password: String) {
@@ -70,7 +74,6 @@ extension RegistrationInteractor: RegistrationInteractorServiceRequester {
             "password": hashedPasssword
         ]
         registerService.postWith(parameters) { [weak self] result in
-//            DispatchQueue.main.async {
                 guard let strongSelf = self else {return}
                 switch result {
                 case .failure(let error):
@@ -82,7 +85,6 @@ extension RegistrationInteractor: RegistrationInteractorServiceRequester {
                     strongSelf.storePassword(password: hashedPasssword)
                     strongSelf.presenter?.didRegister()
                 }
-//            }
         }
     }
 
@@ -97,7 +99,6 @@ extension RegistrationInteractor: RegistrationInteractorServiceRequester {
             ]
 
             loginService.postWith(parameters) { [weak self] result in
-//                DispatchQueue.main.async {
                     guard let strongSelf = self else {return}
                     switch result {
                     case .failure(let error):
@@ -107,13 +108,12 @@ extension RegistrationInteractor: RegistrationInteractorServiceRequester {
                         strongSelf.keychain.token = loginModel.token
                         strongSelf.presenter?.didLogin()
                     }
-//                }
             }
         }
     }
 
     func getLocations(username: String, password: String) {
-        if let password = keychain.password {
+        if keychain.password != nil {
 
             cafeService.getLocationsOfCafes() { [weak self] result in
                 guard let strongSelf = self else {return}
@@ -130,7 +130,6 @@ extension RegistrationInteractor: RegistrationInteractorServiceRequester {
                         strongSelf.presenter?.serviceFailedWithError(MapperError.failParsed(reason: "Encoding error"))
                     }
                 }
-
             }
         }
     }

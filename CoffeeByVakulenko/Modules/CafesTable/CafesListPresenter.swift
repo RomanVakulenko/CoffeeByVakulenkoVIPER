@@ -11,13 +11,12 @@ import Foundation
 // MARK: - CafesListPresenter
 final class CafesListPresenter: CafesListPresentable {
 
-
-    // MARK: - Properties
+    // MARK: - Public properties
     weak var view: CafesListViewProtocol?
     var interactor: CafesListInteractorProtocol
     var router: CafesListRouterProtocol
 
-    // MARK: - Public API
+    // MARK: - Init
     init(view: CafesListViewProtocol? = nil,
          interactor: CafesListInteractorProtocol = CafesListInteractor(),
          router: CafesListRouterProtocol = CafesListRouter()) {
@@ -25,7 +24,7 @@ final class CafesListPresenter: CafesListPresentable {
         self.interactor = interactor
         self.router = router
     }
-
+    // MARK: - Public methods
     func showCafesOnMap() {
         interactor.makeModelWithCoordinates()
     }

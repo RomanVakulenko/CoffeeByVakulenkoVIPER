@@ -23,10 +23,5 @@ final class OrderRouter {
 extension OrderRouter: OrderRouterProtocol {
     func payFor(_ order: [OrderModel]) {
         //ФИНИШ
-//        let module = moduleFactory.makeOrder(using: navigationController,
-//                                             order: order)
-//        if let viewController = module.assemble() {
-//            navigationController.pushViewController(viewController, animated: true)
-//        }
     }
 }

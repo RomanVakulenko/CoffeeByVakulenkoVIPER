@@ -8,16 +8,12 @@
 import Foundation
 
 
-// MARK: - OrderPresenter
 final class OrderPresenter: OrderPresentable {
 
-
-    // MARK: - Properties
     weak var view: OrderViewProtocol?
     var interactor: OrderInteractorProtocol
     var router: OrderRouterProtocol
 
-    // MARK: - Public API
     init(view: OrderViewProtocol? = nil,
          interactor: OrderInteractorProtocol = OrderInteractor(),
          router: OrderRouterProtocol = OrderRouter()) {
@@ -31,7 +27,7 @@ final class OrderPresenter: OrderPresentable {
     }
 }
 
-// MARK: - OrderPresenterServiceInteractable
+
 extension OrderPresenter: OrderPresenterServiceInteractable {
 
     func didTapPay(_ order: [OrderModel]) {

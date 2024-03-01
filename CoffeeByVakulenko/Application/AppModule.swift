@@ -32,8 +32,6 @@ protocol ModuleFactoryProtocol {
 struct ModuleFactory: ModuleFactoryProtocol {
     func makeRegistrationOrLogin(using navigationController: UINavigationController = UINavigationController()) -> RegistrationModule {
         let router = RegistrationRouter(navigationController: navigationController, moduleFactory: self)
-        navigationController.navigationItem.title = "Войти"
-        navigationController.navigationBar.tintColor = Colors.labelcolor
         let view: RegistrationViewProtocol = RegistrationViewController()
         return RegistrationModule(view: view, router: router)
     }

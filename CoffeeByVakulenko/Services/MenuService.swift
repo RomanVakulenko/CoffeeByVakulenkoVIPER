@@ -17,6 +17,7 @@ protocol MenuServiceProtocol: AnyObject {
 class MenuService: MenuServiceProtocol {
     private var coffeeModelsWithPhoto: [OrderModel] = []
 
+    /// С помощью DispatchGroup азагружаются картинки, как все загрузились - передаем в комплишене их
     func makeCoffeeModelWithFoto(for models: [MenuModel],
                                  completion: @escaping (Result<[OrderModel], Error>) -> Void) {
         let group = DispatchGroup()

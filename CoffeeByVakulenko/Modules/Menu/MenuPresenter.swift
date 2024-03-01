@@ -8,15 +8,12 @@
 import Foundation
 
 
-// MARK: - MenuPresenter
 final class MenuPresenter: MenuPresentable {
 
-    // MARK: - Properties
     weak var view: MenuViewProtocol?
     var interactor: MenuInteractorProtocol
     var router: MenuRouterProtocol
 
-    // MARK: - Init
     init(view: MenuViewProtocol? = nil,
          interactor: MenuInteractorProtocol = MenuInteractor(),
          router: MenuRouterProtocol = MenuRouter()) {
@@ -26,7 +23,7 @@ final class MenuPresenter: MenuPresentable {
     }
 }
 
-// MARK: - MenuPresenterServiceInteractable
+
 extension MenuPresenter: MenuPresenterInteractable {
 
     func assembleOrderWith(order: [OrderModel]) {

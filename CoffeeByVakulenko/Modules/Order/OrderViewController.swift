@@ -8,13 +8,14 @@
 import UIKit
 import SnapKit
 
-
+// MARK: - OrderViewController
 final class OrderViewController: UIViewController, OrderViewable {
 
     // MARK: - Public properties
     var presenter: OrderPresenterProtocol = OrderPresenter()
     var orderModel: [OrderModel] = []
 
+    // MARK: - Private properties
     private let borderView: UIView = {
         let stroke = UIView()
         stroke.layer.borderWidth = 0.5

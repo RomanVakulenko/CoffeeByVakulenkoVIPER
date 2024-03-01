@@ -11,12 +11,10 @@ import Foundation
 // MARK: - YMapPresenter
 final class YMapPresenter: YMapPresentable {
 
-    // MARK: - Properties
     weak var view: YMapViewProtocol?
     var interactor: YMapInteractorProtocol
     var router: YMapRouterProtocol
 
-    // MARK: - Public API
     init(view: YMapViewProtocol? = nil,
          interactor: YMapInteractorProtocol = YMapInteractor(),
          router: YMapRouterProtocol = YMapRouter()) {
@@ -26,7 +24,7 @@ final class YMapPresenter: YMapPresentable {
     }
 }
 
-// MARK: - Interactor
+
 extension YMapPresenter: YMapPresenterServiceInteractable {
 
     func showMenu(_ menu: [OrderModel]) {
@@ -39,6 +37,7 @@ extension YMapPresenter: YMapPresenterServiceInteractable {
         interactor.getMenuForCafeId(cafeId)
     }
 }
+
 
 extension YMapPresenter: YMapPresenterServiceHandler {
     func serviceFailedWithError(_ error: Error) {

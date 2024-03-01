@@ -71,40 +71,4 @@ extension CafesListInteractor: CafesListInteractorServiceRequester {
             }
         }
     }
-
-//    func getMenuForCafeId(_ cafeId: Int) {
-//        let cafeMenuService = StandardNetworkService(resourcePath: "/location/" + "\(cafeId)" + "/menu")
-//
-//        cafeMenuService.getMenuForChoosenCafe { [weak self] result in
-//            guard let strongSelf = self else {return}
-//            switch result {
-//            case .success(let menu):
-//                for coffee in menu {
-//                    strongSelf.menuWithFotoInFM.append(strongSelf.menuService.makeCoffeeModelWithFoto(for: coffee))
-//                }
-////                if let uiModel = strongSelf.menuWithFotoInFM {
-//                    print("ДОЛЖНО БЫТЬ ВЫШЕ")
-//                    print(strongSelf.menuWithFotoInFM)
-//                    strongSelf.presenter?.showMenuOfCafe(strongSelf.menuWithFotoInFM)
-////                }
-//                print("ДОЛЖНО БЫТЬ НИЖЕ")
-//            case .failure(let error):
-//                strongSelf.presenter?.serviceFailedWithError(error)
-//            }
-//        }
-//    }
-
-//    func getMenuWith(_ id: Int) {
-//        menuService.makeUIModel(id, completion: { [weak self] result in
-//            guard let strongSelf = self else {return}
-//            switch result {
-//            case .success(let menu):
-//                strongSelf.presenter?.showMenuOfCafe(menu)
-//
-//            case .failure(let error):
-//                strongSelf.presenter?.serviceFailedWithError(error)
-//            }
-//        })
-//    }
-
 }

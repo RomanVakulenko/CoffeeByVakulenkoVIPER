@@ -7,10 +7,9 @@
 
 import Foundation
 
-// MARK: - YMapInteractor
+
 final class YMapInteractor: YMapInteractable {
 
-    // MARK: - Public properties
     weak var presenter: YMapPresenterProtocol?
     var menuService: MenuServiceProtocol
     var modelWithCoordinates: [LocationResponseModel] = []
@@ -21,7 +20,7 @@ final class YMapInteractor: YMapInteractable {
     }
 }
 
-// MARK: - YMapInteractorServiceRequester
+
 extension YMapInteractor: YMapInteractorServiceRequester {
 
     func getMenuForCafeId(_ cafeId: Int) {

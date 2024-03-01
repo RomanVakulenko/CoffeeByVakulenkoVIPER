@@ -114,21 +114,20 @@ final class RegistrationViewController: UIViewController, RegistrationViewable {
         return button
     }()
 
-
     private let userDefaults = CoffeeUserDefaults.shared
 
 
-    // MARK: - Lifecycle Methods
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.setUsernameIfRegisteredEarlier()
         showRegisterOrLoginForm()
+        navigationController?.navigationBar.tintColor = Colors.labelcolor
         navigationController?.navigationBar.backgroundColor = Colors.navBackColor
         navigationController?.navigationBar.titleTextAttributes = [
                 NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18.0),
                 NSAttributedString.Key.foregroundColor: Colors.labelcolor
             ]
-
     }
 
     // MARK: - Public methods

@@ -16,6 +16,7 @@ final class MenuViewController: UIViewController, MenuViewable {
     var menuModel: [OrderModel] = []
     var modelWithAddedQuantity: [OrderModel] = [] //в которую запишем набранные позиции
 
+    // MARK: - Private properties
     private let borderView: UIView = {
         let stroke = UIView()
         stroke.layer.borderWidth = 0.5

@@ -7,9 +7,9 @@
 
 import Foundation
 
-// MARK: - OrderInteractor
+
 final class OrderInteractor: OrderInteractable {
-    // MARK: - Public properties
+
     weak var presenter: OrderPresenterProtocol?
     var order: [OrderModel] = []
 }

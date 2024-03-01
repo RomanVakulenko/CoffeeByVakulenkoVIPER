@@ -62,8 +62,6 @@ final class YMapViewController: UIViewController, YMapViewable {
         }
     }
 
-
-
     private func addPlacemark(_ map: YMKMap, for cafes: [LocationResponseModel]) {
 
         for cafe in modelWithCoordinates {
